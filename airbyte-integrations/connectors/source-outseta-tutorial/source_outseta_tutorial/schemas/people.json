@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "PasswordMustChange": {
+      "type": "boolean"
+    },
+    "PhoneMobile": {
+      "type": ["null", "string"]
+    },
+    "PhoneWork": {
+      "type": ["null", "string"]
+    },
+    "ProfileImageS3Url": {
+      "type": ["null", "string"]
+    },
+    "IPAddress": {
+      "type": ["null", "string"]
+    },
+    "Refereer": {
+      "type": ["null", "string"]
+    },
+    "UserAgent": {
+      "type": ["null", "string"]
+    },
+    "Email": {
+      "type": ["null", "string"]
+    },
+    "Email2": {
+      "type": ["null", "string"]
+    },
+    "FirstName": {
+      "type": ["null", "string"]
+    },
+    "LastName": {
+      "type": ["null", "string"]
+    },
+    "MailingAddress": {
+      "type": ["null", "object"],
+      "properties": {
+        "Uid": {
+          "type": ["null", "string"]
+        },
+        "AddressLine1": {
+          "type": ["null", "string"]
+        },
+        "AddressLine2": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "Title": {
+      "type": ["null", "string"]
+    },
+    "Timezone": {
+      "type": ["null", "string"]
+    }
+  }
+}
