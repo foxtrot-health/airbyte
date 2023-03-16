@@ -143,37 +143,76 @@ class Users(VitalHttpStream):
         # so we just return a list containing the response
         return response.json()['users']
 
-class Sleep(HttpSubStream, VitalHttpStream):
-    primary_key = "id"
-
+class VitalHttpSubStream(HttpSubStream, VitalHttpStream):
     def __init__(self, parent: HttpStream, config: Mapping[str, Any], **kwargs):
         super().__init__(Users(config=config, **kwargs), config=config, **kwargs)
-
         self.config = config
         self.parent = parent
 
     def stream_slices(self, **kwargs) -> Iterable[Optional[Mapping[str, Any]]]:
         users_stream = Users(config=self.config, **kwargs)
-
         for user in users_stream.read_records(sync_mode = SyncMode.full_refresh):
             yield {"user_id": user['user_id']}
+
+    def request_params(
+        self,
+        stream_state: Mapping[str, Any],
+        stream_slice: Mapping[str, Any] = None,
+        next_page_token: Mapping[str, Any] = None,
+    ) -> MutableMapping[str, Any]:
+        start_date = self.config['start_date'] if 'start_date' in self.config else '2023-02-23'
+        return {
+            'start_date':  start_date
+        }
+
+class UsersConnectedProviders(VitalHttpSubStream):
+    primary_key = "id"
+
+    def request_params(
+        self,
+        stream_state: Mapping[str, Any],
+        stream_slice: Mapping[str, Any] = None,
+        next_page_token: Mapping[str, Any] = None,
+    ) -> MutableMapping[str, Any]:
+        return {}
+
+    def path(self, stream_slice: Mapping[str, Any] = None, **kwargs) -> str:
+        user_id = stream_slice["user_id"]
+        return f"/v2/user/providers/{user_id}"
+    
+    def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
+        return response.json()['providers']
+
+
+class Sleep(VitalHttpSubStream):
+    primary_key = "id"
 
     def path(self, stream_slice: Mapping[str, Any] = None, **kwargs) -> str:
         user_id = stream_slice["user_id"]
         return f"/v2/summary/sleep/{user_id}"
     
-    def request_params(
-            self,
-            stream_state: Mapping[str, Any],
-            stream_slice: Mapping[str, Any] = None,
-            next_page_token: Mapping[str, Any] = None,
-    ) -> MutableMapping[str, Any]:
-        return {
-            'start_date': '2023-02-23'
-        }
-
     def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
         return response.json()['sleep']
+
+class Workouts(VitalHttpSubStream):
+    primary_key = "id"
+
+    def path(self, stream_slice: Mapping[str, Any] = None, **kwargs) -> str:
+        user_id = stream_slice["user_id"]
+        return f"/v2/summary/workouts/{user_id}"
+    
+    def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
+        return response.json()['workouts']
+
+class Activities(VitalHttpSubStream):
+    primary_key = "id"
+
+    def path(self, stream_slice: Mapping[str, Any] = None, **kwargs) -> str:
+        user_id = stream_slice["user_id"]
+        return f"/v2/summary/activity/{user_id}"
+    
+    def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
+        return response.json()['activity']
 
 class SourceVitalHttp(AbstractSource):
     def check_connection(self, logger, config) -> Tuple[bool, any]:
@@ -187,5 +226,8 @@ class SourceVitalHttp(AbstractSource):
 
         return [
             users_stream,
-            Sleep(parent=users_stream, config=config)
+            UsersConnectedProviders(parent=users_stream, config=config),
+            Sleep(parent=users_stream, config=config),
+            Workouts(parent=users_stream, config=config),
+            Activities(parent=users_stream, config=config)
         ]

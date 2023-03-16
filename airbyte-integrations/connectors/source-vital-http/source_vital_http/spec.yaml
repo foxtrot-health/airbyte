@@ -5,16 +5,11 @@ connectionSpecification:
   type: object
   required:
     - api_key
+    - start_date
   properties:
     api_key:
       type: string
       description: API key for access
-    offset:
-      type: integer
-      description: Offset
-    limit:
-      type: integer
-      description: Limit
     start_date:
       type: string
       description: Date from in YYYY-MM-DD or ISO formatted date time. If a date is provided without a time, the time will be set to 00:00:00 
