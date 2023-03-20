@@ -1,0 +1,186 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        }
+      }
+    },
+    "deep": {
+      "type": "integer"
+    },
+    "rem": {
+      "type": "number"
+    },
+    "light": {
+      "type": "number"
+    },
+    "awake": {
+      "type": "number"
+    },
+    "total": {
+      "type": "number"
+    },
+    "duration": {
+      "type": "number"
+    },
+    "bedtime_stop": {
+      "type": "string"
+    },
+    "bedtime_start": {
+      "type": "string"
+    },
+    "calendar_date": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "user_key": {
+      "type": ["null", "string"]
+    },
+    "timezone_offset": {
+      "type": ["null", "number"]
+    },
+    "score": {
+      "type": ["null", "number"]
+    },
+    "hr_lowest": {
+      "type": ["null", "number"]
+    },
+    "hr_average": {
+      "type": ["null", "number"]
+    },
+    "efficiency": {
+      "type": ["null", "number"]
+    },
+    "latency": {
+      "type": ["null", "number"]
+    },
+    "temperature_delta": {
+      "type": ["null", "number"]
+    },
+    "skin_temperature": {
+      "type": ["null", "number"]
+    },
+    "average_hrv": {
+      "type": ["null", "number"]
+    },
+    "respiratory_rate": {
+      "type": ["null", "number"]
+    },
+    "sleep_stream": {
+      "type": ["null", "object"],
+      "properties": {
+        "hrv": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              },
+              "timestamp": {
+                "type": "string"
+              },
+              "id": {
+                "type": ["null", "integer"]
+              },
+              "type": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        "heartrate": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "timestamp": {
+                "type": "string"
+              },
+              "id": {
+                "type": ["null", "integer"]
+              },
+              "type": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        "hypnogram": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              },
+              "timestamp": {
+                "type": "string"
+              },
+              "id": {
+                "type": ["null", "integer"]
+              },
+              "type": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        "respiratory_rate": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "timestamp": {
+                "type": "string"
+              },
+              "id": {
+                "type": ["null", "integer"]
+              },
+              "type": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

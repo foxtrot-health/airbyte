@@ -1,0 +1,15 @@
+documentationUrl: https://docs.airbyte.com/integrations/sources/vital-hhtp
+connectionSpecification:
+  $schema: http://json-schema.org/draft-07/schema#
+  title: Vital Http
+  type: object
+  required:
+    - api_key
+    - start_date
+  properties:
+    api_key:
+      type: string
+      description: API key for access
+    start_date:
+      type: string
+      description: Date from in YYYY-MM-DD or ISO formatted date time. If a date is provided without a time, the time will be set to 00:00:00 

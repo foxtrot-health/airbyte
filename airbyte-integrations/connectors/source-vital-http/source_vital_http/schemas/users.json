@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "user_key": {
+      "type": ["null", "string"]
+    },
+    "team_id": {
+      "type": "string"
+    },
+    "client_user_id": {
+      "type": "string"
+    },
+    "created_on": {
+      "type": "string"
+    },
+    "connected_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "string"
+              }
+            }
+          },
+          "created_on": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "fallback_time_zone": {
+      "type": ["null", "string"]
+    }
+  }
+}

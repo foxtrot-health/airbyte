@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        }
+      }
+    },
+    "provider_id": {
+      "type": "string"
+    },
+    "time_end": {
+      "type": "string"
+    },
+    "time_start": {
+      "type": "string"
+    },
+    "calendar_date": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "user_key": {
+      "type": ["null", "string"]
+    },
+    "title": {
+      "type": ["null", "string"]
+    },
+    "timezone_offset": {
+      "type": ["null", "number"]
+    },
+    "average_hr": {
+      "type": ["null", "integer"]
+    },
+    "max_hr": {
+      "type": ["null", "integer"]
+    },
+    "distance": {
+      "type": ["null", "number"]
+    },
+    "calories": {
+      "type": ["null", "number"]
+    },
+    "sport": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        }
+      }
+    },
+    "hr_zones": {
+      "type": ["null", "array"],
+      "items": {
+        "type": "integer"
+      }
+    },
+    "moving_time": {
+      "type": ["null", "integer"]
+    },
+    "total_elevation_gain": {
+      "type": ["null", "number"]
+    },
+    "elev_high": {
+      "type": ["null", "number"]
+    },
+    "elev_low": {
+      "type": ["null", "number"]
+    },
+    "average_speed": {
+      "type": ["null", "number"]
+    },
+    "max_speed": {
+      "type": ["null", "number"]
+    },
+    "average_watts": {
+      "type": ["null", "number"]
+    },
+    "device_watts": {
+      "type": ["null", "number"]
+    },
+    "max_watts": {
+      "type": ["null", "number"]
+    },
+    "weighted_averag_watts": {
+      "type": ["null", "number"]
+    },
+    "map": {
+      "type": ["null", "object"]
+    }
+  }
+}
