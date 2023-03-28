@@ -1,0 +1,20 @@
+documentationUrl: https://docsurl.com
+connectionSpecification:
+  $schema: http://json-schema.org/draft-07/schema#
+  title: Cnsvs Spec
+  type: object
+  required:
+    - username
+    - password
+    - account
+  properties:
+    username:
+      type: string
+      description: CNSVS Online User Name
+    password:
+      type: string
+      description: CNSVS password
+    account:
+      type: string
+      description: CNSVS Account Number
+  

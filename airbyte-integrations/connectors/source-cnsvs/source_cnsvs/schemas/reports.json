@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "sync_id": {
+      "type": "string"
+    },
+    "reference": {
+      "type": ["null", "string"]
+    },
+    "test_date": {
+      "type": ["null", "string"]
+    },
+    "username": {
+      "type": "string"
+    },
+    "test_admin": {
+      "type": ["null", "string"]
+    },
+    "user_group": {
+      "type": ["null", "string"]
+    },
+    "completed": {
+      "type": ["null", "string"]
+    }
+  }
+}
