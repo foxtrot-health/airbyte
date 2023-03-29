@@ -7,6 +7,7 @@ connectionSpecification:
     - username
     - password
     - account
+    - start_date
   properties:
     username:
       type: string
@@ -15,6 +16,9 @@ connectionSpecification:
       type: string
       description: CNSVS password
     account:
+      type: string
+      description: CNSVS Account Number
+    start_date:
       type: string
       description: CNSVS Account Number
   
