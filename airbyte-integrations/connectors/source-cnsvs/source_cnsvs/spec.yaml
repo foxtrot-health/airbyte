@@ -20,5 +20,5 @@ connectionSpecification:
       description: CNSVS Account Number
     start_date:
       type: string
-      description: CNSVS Account Number
+      description: Start date for the report listing e.g 2023-03-01
   
