@@ -56,13 +56,13 @@ class Reports(CnsvsStream):
     
     def parseXml(self, response: requests.Response):
         parsed = xmltodict.parse(response.content)
-        list_reports = parsed.get('LIST_REPORTS')
+        list_reports = parsed.get("LIST_REPORTS")
         return self._lowercase(list_reports)
     
     def next_page_token(self, response: requests.Response) -> Optional[Mapping[str, Any]]:
         list_reports = self.parseXml(response)
-        if int(list_reports.get("pages")) > 0:
-            return str(int(list_reports.get("page_no")) + 1)
+        if int(list_reports.get("pages", 1)) > 0:
+            return str(int(list_reports.get("page_no", 1)) + 1)
         else:
             return None
 
@@ -83,7 +83,7 @@ class Reports(CnsvsStream):
     def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
         list_reports = self.parseXml(response)
 
-        if int(list_reports.get("num_results")) > 0:
+        if int(list_reports.get("num_results", 0)) > 0:
             return list_reports.get("list").get("result");
         else:
             return []
